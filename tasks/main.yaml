@@ -1,5 +1,4 @@
 ---
-
 - name: "copy motd file to /etc/motd"
   copy: 
     src: motd
@@ -7,3 +6,4 @@
     owner: root 
     group: root 
     mode: '644'
+
