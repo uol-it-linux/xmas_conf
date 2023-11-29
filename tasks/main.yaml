@@ -48,17 +48,23 @@
     src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
     dest: /opt/
   when: "'Unpack Flutter' in ansible_run_tags"
+  register: flutter_unpack_result
 
 - name: "Add Flutter to path using profile.d"
   ansible.builtin.lineinfile:
     path: /etc/profile.d/flutter.sh
     create: yes
     line: 'export PATH=$PATH:/opt/flutter/bin'
+  when: flutter_unpack_result.changed
+  register: flutter_path
 
 - name: "Reload profile to apply changes"
   ansible.builtin.command: "/bin/bash -l -c 'for file in /etc/profile.d/*; do source $file; done'"
+  when: flutter_path.changed
+  register: flutter_in_path
  
 - name: "Build Hauberk"
   ansible.builtin.command: make serve
   args:
     chdir: /usr/local/hauberk
+  when: flutter_in_path.changed
