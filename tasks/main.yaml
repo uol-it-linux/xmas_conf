@@ -83,9 +83,9 @@
 #  when: git_happy.changed
 
 - name: "Build Hauberk"
-  ansible.builtin.shell:
-    cmd: "make serve"
+  ansible.builtin.command: make serve
+   # cmd: "make serve"
     chdir: "/usr/local/hauberk"
-    #environment:
-     # PATH: "{{ ansible_env.PATH }}:/opt/flutter/bin"
+    environment:
+      PATH: "{{ ansible_env.PATH }}:/opt/flutter/bin"
   when: git_happy.changed
