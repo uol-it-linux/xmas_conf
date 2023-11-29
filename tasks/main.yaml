@@ -69,7 +69,7 @@
   register: git_happy
 
 - name: "Debug PATH"
-  ansible.builtin.command: echo $PATH
+  ansible.builtin.debug: echo $PATH
   when: git_happy.changed
  
 - name: "Build Hauberk"
