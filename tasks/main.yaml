@@ -24,5 +24,11 @@
     create: yes
     line: 'export PATH=$PATH:/usr/local/bashcrawl'
 
+- name: Create a symlink for all users to "cd bashcrawl"
+  ansible.builtin.file:
+    src: /usr/local/bashcrawl
+    dest: /usr/local/bin/bashcrawl
+    state: link
+
 - name: "Reload Profile"
   ansible.builtin.command: source /etc/profile
