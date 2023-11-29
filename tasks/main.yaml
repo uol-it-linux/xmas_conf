@@ -37,7 +37,7 @@
     version: master
 
 - name: "Download Flutter"
-  ansible.builtin.get: 
+  ansible.builtin.get_url: 
     url: https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.1-stable.tar.xz
     dest: /usr/local/flutter_linux_3.16.1-stable.tar.xz
 
