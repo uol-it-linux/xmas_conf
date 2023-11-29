@@ -62,9 +62,14 @@
   ansible.builtin.command: "/bin/bash -l -c 'for file in /etc/profile.d/*; do source $file; done'"
   when: flutter_path.changed
   register: flutter_in_path
+
+- name: "Appease Git"
+  ansible.builtin.command: git config --global --add safe.directory /opt/flutter
+  when: flutter_in_path.changed
+  register: git_happy
  
 - name: "Build Hauberk"
   ansible.builtin.command: make serve
   args:
     chdir: /usr/local/hauberk
-  when: flutter_in_path.changed
+  when: git_happy.changed
