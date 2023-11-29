@@ -75,8 +75,9 @@
  
 - name: "Build Hauberk"
   ansible.builtin.command: 
-    chdir: /usr/local/hauberk
+#    chdir: /usr/local/hauberk
     argv: 
+      - cd /usr/local/hauberk
       - PATH=$PATH:/opt/flutter/bin
       - make serve
   when: git_happy.changed
