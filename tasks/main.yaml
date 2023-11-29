@@ -43,12 +43,12 @@
   notify: 
     - Unpack Flutter
 
-#- name: "Unpack Flutter"
-#  ansible.builtin.unarchive:
-#    src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
-#    dest: /opt/
-#  when: "'Unpack Flutter' in ansible_run_tags"
-#  register: flutter_unpack_result
+- name: "Unpack Flutter"
+  ansible.builtin.unarchive:
+    src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
+    dest: /opt/
+  when: "'Unpack Flutter' in ansible_run_tags"
+  register: flutter_unpack_result
 
 - name: "Add Flutter to path using profile.d"
   ansible.builtin.lineinfile:
