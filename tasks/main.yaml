@@ -56,9 +56,7 @@
     line: 'export PATH=$PATH:/opt/flutter/bin'
 
 - name: Reload profile to apply changes
-  ansible.builtin.command: source /etc/profile
-  args:
-    executable: /bin/bash
+  ansible.builtin.command: "/bin/bash -l -c 'for file in /etc/profile.d/*; do source $file; done'"
 
 - name: "Build Hauberk"
   ansible.builtin.command: make serve
