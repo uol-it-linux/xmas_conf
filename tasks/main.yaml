@@ -29,6 +29,3 @@
     src: /usr/local/bashcrawl
     dest: /usr/local/bin/bashcrawl
     state: link
-
-- name: "Reload Profile"
-  ansible.builtin.command: source /etc/profile
