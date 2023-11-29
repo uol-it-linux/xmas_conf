@@ -48,7 +48,7 @@
     src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
     dest: /opt/
     remote_src: yes
-  when: "'Unpack Flutter' in ansible_run_tags"
+  when: Unpack Flutter.changed
   register: flutter_unpack_result
 
 - name: "Add Flutter to path using profile.d"
