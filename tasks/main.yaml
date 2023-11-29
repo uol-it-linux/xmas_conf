@@ -54,10 +54,10 @@
 
 - name: Reload profile to apply changes
   ansible.builtin.command: source /etc/profile
-    args:
-      executable: /bin/bash
+  args:
+    executable: /bin/bash
 
 - name: "Build Hauberk"
   ansible.builtin.command: make serve
-      args:
-         chdir: /usr/local/hauberk
+  args:
+    chdir: /usr/local/hauberk
