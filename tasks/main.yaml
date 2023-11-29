@@ -7,3 +7,22 @@
     group: root 
     mode: '644'
 
+- name: "Clone Bashcrawl"
+  ansible.builtin.git:
+    repo: https://gitlab.com/slackermedia/bashcrawl.git
+    dest: /usr/local/bashcrawl
+    version: master
+
+- name: "Ensure profile.d exists"
+  ansible.builtin.file:
+    path: /etc/profile.d/
+    state: directory
+
+- name: "Add Bashcrawl to the system PATH using profile.d"
+  ansible.builtin.lineinfile:
+    path: /etc/profile.d/bashcrawl.sh
+    create: yes
+    line: 'export PATH=$PATH:/usr/local/bashcrawl'
+
+- name: "Reload Profile"
+  ansible.builtin.command: source /etc/profile
