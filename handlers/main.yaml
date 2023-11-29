@@ -1,5 +1,5 @@
 ---
-#- name: "Unpack Flutter"
-#  ansible.builtin.unarchive:
-#        src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
-#        dest: /opt/
+- name: "Unpack Flutter"
+  ansible.builtin.unarchive:
+        src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
+        dest: /opt/
