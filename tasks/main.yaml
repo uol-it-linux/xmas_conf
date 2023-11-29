@@ -29,3 +29,35 @@
     src: /usr/local/bashcrawl
     dest: /usr/local/bin/bashcrawl
     state: link
+
+- name: "Clone Hauberk"
+  ansible.builtin.git:
+    repo: https://github.com/munificent/hauberk.git
+    dest: /usr/local/hauberk
+    version: master
+
+- name: "Download Flutter"
+  ansible.builtin.get: 
+    url: https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.1-stable.tar.xz
+    dest: /usr/local/flutter_linux_3.16.1-stable.tar.xz
+
+- name: "Unpack Flutter"
+  ansible.builtin.unarchive:
+    src: /usr/local/flutter_linux_3.16.1-stable.tar.xz
+    dest: /opt/
+
+- name: "Add Flutter to path using profile.d"
+  ansible.builtin.lineinfile:
+    path: /etc/profile.d/flutter.sh
+    create: yes
+    line: 'export PATH=$PATH:/opt/flutter/bin'
+
+- name: Reload profile to apply changes
+  ansible.builtin.command: source /etc/profile
+    args:
+      executable: /bin/bash
+
+- name: "Build Hauberk"
+  ansible.builtin.command: make serve
+      args:
+         chdir: /usr/local/hauberk
