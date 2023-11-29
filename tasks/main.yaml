@@ -69,7 +69,7 @@
   register: git_happy
  
 - name: "Build Hauberk"
-  ansible.builtin.command: make serve
+  ansible.builtin.command: PATH=$PATH:/opt/flutter/bin make serve
   args:
     chdir: /usr/local/hauberk
   when: git_happy.changed
