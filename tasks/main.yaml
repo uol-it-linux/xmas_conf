@@ -89,5 +89,5 @@
     chdir: "/usr/local/hauberk"
   environment:
     PATH: "{{ ansible_env.PATH }}:/opt/flutter/bin"
-  become: foremanexec
+  become_user: foremanexec
   when: git_happy.changed
