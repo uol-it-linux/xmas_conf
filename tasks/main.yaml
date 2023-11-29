@@ -67,6 +67,9 @@
   ansible.builtin.command: git config --global --add safe.directory /opt/flutter
   when: flutter_in_path.changed
   register: git_happy
+
+- name: "Debug PATH"
+  ansible.builtin.command: echo $PATH
  
 - name: "Build Hauberk"
   ansible.builtin.command: PATH=$PATH:/opt/flutter/bin make serve
