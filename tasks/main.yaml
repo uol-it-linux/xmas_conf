@@ -35,6 +35,7 @@
     repo: https://github.com/munificent/hauberk.git
     dest: /usr/local/hauberk
     version: master
+    mode: '0775'
 
 - name: "Download Flutter"
   ansible.builtin.get_url: 
