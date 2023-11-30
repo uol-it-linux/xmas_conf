@@ -39,7 +39,7 @@
 - name: "Set Hauberk Permissons"
   ansible.builtin.file:
     path: /usr/local/hauberk
-    mode: '0775'
+    mode: '1775'
     group: 513
     state: directory
 
