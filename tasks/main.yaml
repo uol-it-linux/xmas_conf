@@ -40,7 +40,7 @@
   ansible.builtin.file:
     path: /usr/local/hauberk
     mode: '1775'
-    group: 513
+    group: '513'
     state: directory
 
 
