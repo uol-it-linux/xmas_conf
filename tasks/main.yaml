@@ -35,7 +35,12 @@
     repo: https://github.com/munificent/hauberk.git
     dest: /usr/local/hauberk
     version: master
+
+- name: "Set Hauberk Permissons"
+  ansible.builtin.file:
+    path: /usr/local/hauberk
     mode: '0775'
+    state: directory
 
 - name: "Download Flutter"
   ansible.builtin.get_url: 
