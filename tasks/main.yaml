@@ -40,7 +40,9 @@
   ansible.builtin.file:
     path: /usr/local/hauberk
     mode: '0775'
+    group: 513
     state: directory
+
 
 - name: "Download Flutter"
   ansible.builtin.get_url: 
