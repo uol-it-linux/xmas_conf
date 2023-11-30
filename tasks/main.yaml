@@ -82,12 +82,11 @@
 #      PATH: "{{ ansible_env.PATH }}:/opt/flutter/bin"
 #  when: git_happy.changed
 
-- name: "Build Hauberk"
-  ansible.builtin.command: make serve
-  args:
-   # cmd: "make serve"
-    chdir: "/usr/local/hauberk"
-  environment:
-    PATH: "{{ ansible_env.PATH }}:/opt/flutter/bin"
-  become_user: uoljwh
-  when: git_happy.changed
+#- name: "Build Hauberk"
+#  ansible.builtin.command: make serve
+# args:
+#   chdir: "/usr/local/hauberk"
+ # environment:
+ #   PATH: "{{ ansible_env.PATH }}:/opt/flutter/bin"
+ # become_user: uoljwh
+ # when: git_happy.changed
